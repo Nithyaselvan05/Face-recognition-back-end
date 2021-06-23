@@ -5,20 +5,31 @@ const bodyparser= require('body-parser')
 const cors=require('cors')
 const knex = require('knex')
 const clarifai=require('clarifai')
-app.use(bodyparser.json())
-app.use(cors())
+// const db=knex({
+//   client: 'pg',
+//   connection: {
+//     host : '127.0.0.1',
+//     user : 'postgres',
+//     password : 'Postgres@0518',
+//     database : 'smart-brain'
+//   }
+// });
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db=knex({
   client: 'pg',
   connection: {
     connectionString : process.env.DATABASE_URL,
-    ssl:true
+    ssl: {
+    rejectUnauthorized: false
+  }
   }
 });
 const app1 = new Clarifai.App({
  apiKey: '54af97c426854709bd4bc599c37da211'
 });
 
-
+app.use(bodyparser.json())
+app.use(cors())
 
 app.get('/',function(req,res){
 	res.send("This is working")
