@@ -8,10 +8,8 @@ const clarifai=require('clarifai')
 const db=knex({
   client: 'pg',
   connection: {
-    host : 'postgresql-colorful-74976',
-    user : 'postgres',
-    password : 'Postgres@0518',
-    database : 'smart-brain'
+    host : process.env.DATABASE_URL,
+    ssl:true
   }
 });
 const app1 = new Clarifai.App({
