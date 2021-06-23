@@ -25,7 +25,7 @@ const db=knex({
   }
 });
 const app1 = new Clarifai.App({
- apiKey: '54af97c426854709bd4bc599c37da211'
+ apiKey: process.env.API_CLARIFAI
 });
 
 app.use(bodyparser.json())
