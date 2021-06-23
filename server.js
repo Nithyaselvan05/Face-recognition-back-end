@@ -5,6 +5,8 @@ const bodyparser= require('body-parser')
 const cors=require('cors')
 const knex = require('knex')
 const clarifai=require('clarifai')
+app.use(bodyparser.json())
+app.use(cors())
 const db=knex({
   client: 'pg',
   connection: {
@@ -16,8 +18,7 @@ const app1 = new Clarifai.App({
  apiKey: '54af97c426854709bd4bc599c37da211'
 });
 
-app.use(bodyparser.json())
-app.use(cors())
+
 
 app.get('/',function(req,res){
 	res.send("This is working")
