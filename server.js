@@ -22,7 +22,7 @@ app.use(bodyparser.json())
 app.use(cors())
 
 app.get('/',function(req,res){
-	res.send(database)
+	res.send("This is working")
 })
 
 app.post("/signin",function(req,res){
